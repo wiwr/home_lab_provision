@@ -1,13 +1,10 @@
 #!/bin/bash
 
 REPO_URL="https://github.com/wiwr/home_lab_provision.git"
-REPO_DIR="~/home_lab_provison"
+REPO_DIR="/home/ubuntu/home_lab_provison"
 
 GIT_INSTALLED=$(command -v git)
 ANSIBLE_INSTALLED=$(command -v ansible)
-
-echo "git: ${GIT_INSTALLED}"
-echo "ansible: ${ANSIBLE_INSTALLED}"
 
 if [[ -n "$GIT_INSTALLED" && -n "$ANSIBLE_INSTALLED" ]]; then
 	echo "Git and Ansible are already installed"
