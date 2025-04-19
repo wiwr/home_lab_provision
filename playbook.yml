@@ -1,0 +1,7 @@
+- name: Prepare lab server
+  hosts: localhost
+  become: yes
+  roles:
+    - role: install_apps
+      vars_files:
+        - roles/install_apps/vars/apps.yml
