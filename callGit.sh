@@ -3,9 +3,17 @@
 REPO_URL="https://github.com/wiwr/home_lab_provision.git"
 REPO_DIR="~/home_lab_provison"
 
-apt update && apt upgrade -y
+GIT_INSTALLED=$(command -v git)
+ANSIBLE_INSTALLED=$(command -v ansible)
 
-apt install -y git ansible
+if [[ -n "$GIT_INSTALLED" && -n "$ANSIBLE_INSTALLED" ]]; then
+	echo "Git and Ansible are already installed"
+	echo "Skipping updated..."
+	echo "Skipping installation..."
+else
+        apt update && apt upgrade -y
+        apt install -y git ansible
+fi
 
 rm -rf "$REPO_DIR"
 git clone "$REPO_URL" "$REPO_DIR"
