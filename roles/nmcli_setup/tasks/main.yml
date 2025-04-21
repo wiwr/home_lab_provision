@@ -12,6 +12,13 @@
     insertafter: '^\[ifupdown\]'
     backup: yes
 
+- name: Comment out static enp1s0 config
+  replace:
+    path: /etc/network/interfaces
+    regexp: '^(.*enp1s0.*)$'
+    replace: '# \1'
+  notify: Restart networking
+
 - name: Restart NetworkManager to apply config changes
   systemd:
     name: NetworkManager
