@@ -3,6 +3,6 @@
   become: yes
   vars_files:
     - roles/install_apps/vars/apps.yml
-    - roles/nmcli_setup/tasks/main.yml
   roles:
     - install_apps
+    - nmcli_setup
