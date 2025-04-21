@@ -12,12 +12,12 @@
     insertafter: '^\[ifupdown\]'
     backup: yes
 
-- name: Comment out static enp1s0 config
-  replace:
-    path: /etc/network/interfaces
-    regexp: '^(.*enp1s0.*)$'
-    replace: '# \1'
-  notify: Restart networking
+- name: Create and activate connection for enp1s0
+  shell: |
+    nmcli connection add type ethernet ifname enp1s0 con-name eth0 autoconnect yes
+    nmcli connection up eth0
+  args:
+    creates: /etc/NetworkManager/system-connections/eth0.nmconnection
 
 - name: Restart NetworkManager to apply config changes
   systemd:
