@@ -5,6 +5,7 @@ REPO_DIR="/home/ubuntu/home_lab_provison"
 
 GIT_INSTALLED=$(command -v git)
 ANSIBLE_INSTALLED=$(command -v ansible)
+VAULT_PASSWORD_FILE="vault-pass.txt"
 
 if [[ -n "$GIT_INSTALLED" && -n "$ANSIBLE_INSTALLED" ]]; then
 	echo "Git and Ansible are already installed"
@@ -19,5 +20,5 @@ rm -rf "$REPO_DIR"
 git clone "$REPO_URL" "$REPO_DIR"
 
 cd "$REPO_DIR"
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml --valut-password-file "$VAULT_PASSWORD_FILE"
 
