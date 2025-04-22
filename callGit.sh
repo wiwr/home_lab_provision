@@ -5,7 +5,7 @@ REPO_DIR="/home/ubuntu/home_lab_provison"
 
 GIT_INSTALLED=$(command -v git)
 ANSIBLE_INSTALLED=$(command -v ansible)
-VAULT_PASSWORD_FILE="vault-pass.txt"
+VAULT_PASSWORD_FILE="../vault-pass.txt"
 
 if [[ -n "$GIT_INSTALLED" && -n "$ANSIBLE_INSTALLED" ]]; then
 	echo "Git and Ansible are already installed"
