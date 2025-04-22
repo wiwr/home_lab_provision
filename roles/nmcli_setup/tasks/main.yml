@@ -11,7 +11,7 @@
 
 - name: Apply netplan configuration
   command: netplan apply
-  notify: Restart NetowrkManager
+  notify: Restart NetworkManager
 
 - name: Add static IP connection
   command: >
