@@ -9,10 +9,6 @@
     src: 01-network-manager.yaml.j2
     dest: /etc/netplan/01-network-manager.yml
 
-- name: Apply netplan configuration
-  command: netplan apply
-  notify: Restart NetworkManager
-
 - name: Add static IP connection
   command: >
     nmcli connection add type ethernet ifname {{ interface_name }}
@@ -24,5 +20,9 @@
   args:
     creates: "/etc/NetworkManager/system-connections/{{ connection_name }}.nmconnection"
 
+
+- name: Apply netplan configuration
+  command: netplan apply
+  notify: Restart NetworkManager
 - name: Bring up the connection
   command: nmcli connection up {{ connection_name }}
