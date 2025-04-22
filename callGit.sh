@@ -20,5 +20,5 @@ rm -rf "$REPO_DIR"
 git clone "$REPO_URL" "$REPO_DIR"
 
 cd "$REPO_DIR"
-ansible-playbook playbook.yml --valut-password-file "$VAULT_PASSWORD_FILE"
+ansible-playbook playbook.yml --vault-password-file "$VAULT_PASSWORD_FILE"
 
