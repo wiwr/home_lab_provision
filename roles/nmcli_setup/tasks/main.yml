@@ -6,7 +6,7 @@
 
 - name: Set NetworkManager as netplan renderer
   template:
-    src: 01-network-manager.yml.j2
+    src: 01-network-manager.yaml.j2
     dest: /etc/netplan/01-network-manager.yml
 
 - name: Apply netplan configuration
