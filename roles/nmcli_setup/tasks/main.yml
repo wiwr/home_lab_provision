@@ -14,11 +14,11 @@
     conn_name: static-ip
     type: ethernet
     ifname: enp1s0
-    ip4: {{ static_ip }}
-    gw4: {{ gateway_ip }}
+    ip4: "{{ static_ip }}"
+    gw4: "{{ gateway_ip }}"
     dns4:
-      - {{ dns1 }}
-      - {{ dns2 }}
+      - "{{ dns1 }}"
+      - "{{ dns2 }}"
     state: present
     autoconnect: yes
 
