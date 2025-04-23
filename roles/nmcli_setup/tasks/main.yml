@@ -1,13 +1,23 @@
 - name: Enable and start NetworkManager service
-  systemd:
+  ansible.builtin.systemd:
     name: NetworkManager
-    enabled: yes
+    enabled: true 
     state: started
 
 - name: Set NetworkManager as netplan renderer
-  template:
+  ansible.builtin.template:
     src: 01-network-manager.yaml.j2
     dest: /etc/netplan/01-network-manager.yml
+
+- name: Apply netplan configuration
+  command: netplan apply
+  notify: Restart NetworkManager
+
+- name: Remove any old connection for this interface 
+  community.general.nmcli:
+    conn_name: enp1s0
+    state: absent
+  ignore_errors: true
 
 - name: Create a static ethernet connection using nmcli
   community.general.nmcli:
@@ -22,6 +32,7 @@
     state: present
     autoconnect: yes
 
-- name: Apply netplan configuration
-  command: netplan apply
-  notify: Restart NetworkManager
+- name: Bring up the static connection
+  community.general.nmcli:
+    conn_name: static-ip
+    state: up
