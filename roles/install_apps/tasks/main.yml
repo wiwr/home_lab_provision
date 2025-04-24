@@ -1,13 +1,13 @@
 - name: Update apt cache
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
 
 - name: Upgrade all packages
-  apt: 
+  ansible.builtin.apt: 
     upgrade: dist
 
 - name: Install application list
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop: "{{ app_list }}"
