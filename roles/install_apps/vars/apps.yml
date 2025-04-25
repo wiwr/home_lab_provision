@@ -2,3 +2,4 @@ app_list:
   - vim
   - net-tools
   - network-manager
+  - iputils-ping
