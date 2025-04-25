@@ -13,12 +13,6 @@
   ansible.builtin.command: netplan apply
   notify: Restart NetworkManager
 
-- name: Remove any old connection for this interface 
-  community.general.nmcli:
-    conn_name: eth0
-    state: absent
-  ignore_errors: true
-
 - name: Create a static ethernet connection using nmcli
   community.general.nmcli:
     conn_name: eth0
@@ -31,8 +25,3 @@
       - "{{ dns2 }}"
     state: present
     autoconnect: yes
-
-- name: Bring up the static connection
-  community.general.nmcli:
-    conn_name: eth0 
-    state: up
