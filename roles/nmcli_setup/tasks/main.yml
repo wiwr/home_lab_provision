@@ -15,7 +15,7 @@
 
 - name: Remove any old connection for this interface 
   community.general.nmcli:
-    conn_name: enp1s0
+    conn_name: eth0
     state: absent
   ignore_errors: true
 
@@ -34,5 +34,5 @@
 
 - name: Bring up the static connection
   community.general.nmcli:
-    conn_name: static-ip
+    conn_name: eth0 
     state: up
