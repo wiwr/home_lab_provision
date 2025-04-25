@@ -21,7 +21,7 @@
 
 - name: Create a static ethernet connection using nmcli
   community.general.nmcli:
-    conn_name: static-ip
+    conn_name: eth0
     type: ethernet
     ifname: enp1s0
     ip4: "{{ static_ip }}"
