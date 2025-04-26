@@ -15,9 +15,9 @@
 
 - name: Create a static ethernet connection using nmcli
   community.general.nmcli:
-    conn_name: enp1s0 
+    conn_name: "{{ connection_name }}"
     type: ethernet
-    ifname: enp1s0
+    ifname: "{{ interface_name }}"
     ip4: "{{ static_ip }}"
     gw4: "{{ gateway_ip }}"
     dns4:
