@@ -6,3 +6,4 @@
   roles:
     - install_apps
     - nmcli_setup
+    - firewall
